@@ -90,6 +90,9 @@ try:
     data_frame['convenio'] = data_frame['convenio'].apply(formatar_convenio)
     data_frame['numero_convenio'] = data_frame['numero_convenio'].apply(formatar_num_convenio)
 
+    data_frame['nascimento'] = pandas.to_datetime(data_frame['nascimento'])
+    data_frame['nascimento'] = data_frame['nascimento'].dt.strftime('%d-%m-%Y')
+
     data_frame.to_csv('backup_csv', index=False, encoding='latin-1')
 
 except Error as err:
